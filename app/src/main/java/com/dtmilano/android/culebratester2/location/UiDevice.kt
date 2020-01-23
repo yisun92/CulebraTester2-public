@@ -40,6 +40,7 @@ class UiDevice {
 
         fun response(): String {
             val output = ByteArrayOutputStream()
+            holder.uiDevice.setCompressedLayoutHeirarchy(true)
             holder.uiDevice.dumpWindowHierarchy(output)
             return when (format.toUpperCase(Locale.ROOT)) {
                 "JSON" -> convertWindowHierarchyDumpToJson(output.toString())
