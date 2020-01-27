@@ -388,7 +388,8 @@ class UiDevice {
                     val bsb = bySelectorBundleFromString(it)
                     val objs = holder.uiDevice.findObjects(bsb.selector)
                     if (objs.isNotEmpty()) {
-                        return@response objs.map { ObjectRef(objectStore.put(it), it.className) }
+                        return@response objs.map { ObjectRef(objectStore.put(it), it.getVisibleBounds().toString()) }
+                        // TODO: change className to bounds
                     }
                 }
 
